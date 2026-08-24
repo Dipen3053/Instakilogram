@@ -1,5 +1,5 @@
 /* =========================================================
-   INSTAKILOGRAM - MAIN DESIGN
+   CLOUDFISK — MODERN STREAMING PLATFORM DESIGN
    ========================================================= */
 
 * {
@@ -12,9 +12,37 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: #0b1120;
+    color: #e5e7eb;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: #f8fafc;
 }
 
 /* =========================================================
@@ -22,33 +50,64 @@ body {
    ========================================================= */
 
 .navbar {
-    background: #111827;
-    color: white;
-    padding: 16px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 45px;
+
+    background: rgba(11, 17, 32, 0.94);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 .navbar h1 {
     margin: 0;
-    font-size: 24px;
-    letter-spacing: 0.5px;
+
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #6366f1
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .navbar a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+    color: #cbd5e1;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
     font-weight: 600;
+
+    transition: all 0.2s ease;
 }
 
 .navbar a:hover {
-    text-decoration: underline;
+    color: white;
+    background: rgba(59, 130, 246, 0.15);
 }
 
 /* =========================================================
@@ -56,23 +115,94 @@ body {
    ========================================================= */
 
 .container {
-    width: 92%;
-    max-width: 1200px;
-    margin: 30px auto;
+    width: 90%;
+    max-width: 1250px;
+
+    margin: 35px auto 70px;
 }
 
 /* =========================================================
-   HEADINGS
+   HERO
    ========================================================= */
 
-h1,
-h2,
-h3 {
-    color: #111827;
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 75px 55px;
+
+    margin-bottom: 35px;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(59, 130, 246, 0.35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(99, 102, 241, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #111827,
+            #172554,
+            #111827
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
 }
 
-h2 {
-    margin-bottom: 20px;
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -100px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(56, 189, 248, 0.12);
+
+    filter: blur(10px);
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+
+    margin-bottom: 18px;
+
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 800;
+
+    color: white;
+}
+
+.hero p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 700px;
+
+    margin: 0;
+
+    font-size: 17px;
+
+    color: #cbd5e1;
 }
 
 /* =========================================================
@@ -80,67 +210,161 @@ h2 {
    ========================================================= */
 
 .panel {
-    background: white;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 14px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 41, 59, 0.95),
+            rgba(15, 23, 42, 0.98)
+        );
+
+    padding: 28px;
+
+    margin-bottom: 28px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.18);
 }
 
 .panel h2 {
-    margin-top: 0;
+    margin-bottom: 8px;
+
+    font-size: 24px;
+    font-weight: 750;
+
+    color: #f8fafc;
+}
+
+.panel > p {
+    color: #94a3b8;
 }
 
 /* =========================================================
-   WELCOME / HERO SECTION
-   ========================================================= */
-
-.hero {
-    background: linear-gradient(
-        135deg,
-        #111827,
-        #374151
-    );
-
-    color: white;
-    padding: 45px 30px;
-    border-radius: 16px;
-    margin-bottom: 30px;
-}
-
-.hero h1 {
-    color: white;
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 17px;
-    margin-bottom: 0;
-    color: #e5e7eb;
-}
-
-/* =========================================================
-   SEARCH
+   SEARCH SECTION
    ========================================================= */
 
 .searchBox {
     display: flex;
+
     gap: 10px;
-    margin-bottom: 30px;
+
+    margin-top: 22px;
 }
 
 .searchBox input {
     flex: 1;
-    padding: 13px 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+
+    margin: 0;
+
+    padding: 13px 16px;
+
+    background: #0f172a;
+
+    border: 1px solid #334155;
+
+    border-radius: 10px;
+
+    color: white;
+
     font-size: 15px;
+}
+
+.searchBox input::placeholder {
+    color: #64748b;
 }
 
 .searchBox input:focus {
     outline: none;
-    border-color: #111827;
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* =========================================================
+   CATEGORY BAR
+   ========================================================= */
+
+.categoryBar {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin: 20px 0;
+}
+
+.categoryBar button {
+    background: #172033;
+
+    color: #cbd5e1;
+
+    border: 1px solid #334155;
+
+    border-radius: 30px;
+
+    padding: 8px 15px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.categoryBar button:hover {
+    background: #2563eb;
+
+    color: white;
+
+    border-color: #2563eb;
+
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 /* =========================================================
@@ -151,50 +375,138 @@ input,
 select,
 textarea {
     width: 100%;
-    padding: 12px;
+
+    padding: 12px 14px;
+
     margin-top: 6px;
     margin-bottom: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 15px;
-    font-family: inherit;
+
+    background: #0f172a;
+
+    color: #e5e7eb;
+
+    border: 1px solid #334155;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    transition: border 0.2s ease,
+                box-shadow 0.2s ease;
 }
 
-textarea {
-    min-height: 100px;
-    resize: vertical;
+input::placeholder,
+textarea::placeholder {
+    color: #64748b;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #374151;
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+textarea {
+    min-height: 110px;
+
+    resize: vertical;
+}
+
+form {
+    margin-top: 18px;
+}
+
+form label {
+    display: block;
+
+    margin-top: 10px;
+
+    margin-bottom: 4px;
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    font-weight: 650;
 }
 
 /* =========================================================
-   BUTTONS
+   ACCOUNT AREA
    ========================================================= */
 
-button {
-    background: #111827;
-    color: white;
-    border: none;
-    padding: 11px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
+.accountGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    margin-bottom: 28px;
+}
+
+.accountPanel {
+    margin-bottom: 0;
+}
+
+.accountPanel h2 {
+    font-size: 22px;
+}
+
+.accountPanel > p {
+    color: #94a3b8;
+}
+
+.accountPanel button {
+    width: 100%;
+
+    padding: 13px;
+}
+
+#loginMessage,
+#registerMessage {
+    margin-top: 15px;
+
     font-weight: 600;
-    transition: 0.2s;
 }
 
-button:hover {
-    background: #374151;
-    transform: translateY(-1px);
+/* =========================================================
+   LOGGED-IN USER
+   ========================================================= */
+
+#userSection {
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #312e81
+        );
+
+    border-color:
+        rgba(96, 165, 250, 0.25);
 }
 
-button:active {
-    transform: translateY(0);
+#userSection h2 {
+    color: white;
+
+    font-size: 25px;
+}
+
+#userSection p {
+    color: #dbeafe;
+}
+
+#userSection .actions {
+    margin-top: 20px;
+}
+
+#userSection .actions button {
+    width: auto;
 }
 
 /* =========================================================
@@ -203,12 +515,14 @@ button:active {
 
 .videoGrid {
     display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(300px, 1fr)
-    );
 
-    gap: 25px;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(310px, 1fr)
+        );
+
+    gap: 24px;
 }
 
 /* =========================================================
@@ -216,52 +530,193 @@ button:active {
    ========================================================= */
 
 .videoCard {
-    background: white;
-    border-radius: 14px;
     overflow: hidden;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
-    transition: 0.25s;
+
+    background:
+        linear-gradient(
+            145deg,
+            #172033,
+            #0f172a
+        );
+
+    border-radius: 17px;
+
+    border: 1px solid #263449;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .videoCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(59, 130, 246, 0.45);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.videoCardMedia {
+    background: #000;
+
+    overflow: hidden;
+}
+
+.videoCardMedia video {
+    width: 100%;
+
+    height: 220px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #000;
 }
 
 .videoCard video {
-    display: block;
     width: 100%;
-    max-width: 100%;
-    height: 210px;
+
+    height: 220px;
+
+    display: block;
+
     object-fit: cover;
+
     background: #000;
 }
 
 .videoCardContent {
-    padding: 18px;
+    padding: 20px;
+}
+
+.videoCardContent h3 {
+    margin: 0 0 10px;
+
+    color: #f8fafc;
+
+    font-size: 20px;
 }
 
 .videoCard h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 19px;
+    color: #f8fafc;
 }
 
 .videoCard p {
-    margin: 7px 0;
-    color: #555;
+    color: #94a3b8;
+
     font-size: 14px;
 }
 
 /* =========================================================
-   VIDEO ACTIONS
+   VIDEO CREATOR
+   ========================================================= */
+
+.videoCreator {
+    color: #93c5fd;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+/* =========================================================
+   VIDEO META
+   ========================================================= */
+
+.videoMeta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+}
+
+.videoMeta span {
+    background: #1e293b;
+
+    color: #cbd5e1;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    border: 1px solid #334155;
+
+    font-size: 12px;
+
+    font-weight: 650;
+}
+
+/* =========================================================
+   VIDEO DETAILS
+   ========================================================= */
+
+.videoDetails {
+    padding: 13px 0;
+
+    border-top: 1px solid #263449;
+
+    border-bottom: 1px solid #263449;
+}
+
+.videoDetails p {
+    margin: 6px 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   VIDEO STATISTICS
+   ========================================================= */
+
+.videoStats {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: #111827;
+
+    border: 1px solid #263449;
+
+    border-radius: 10px;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}
+
+/* =========================================================
+   ACTIONS
    ========================================================= */
 
 .actions {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 8px;
+
+    gap: 9px;
+
     margin-top: 15px;
 }
 
@@ -270,19 +725,27 @@ button:active {
 }
 
 /* =========================================================
-   RATINGS
+   RATING BOX
    ========================================================= */
 
 .ratingBox {
-    margin-top: 15px;
+    margin-top: 18px;
+
     padding: 15px;
-    background: #f8fafc;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
+
+    background: #111827;
+
+    border: 1px solid #263449;
+
+    border-radius: 11px;
 }
 
 .ratingBox select {
-    margin-bottom: 8px;
+    width: 100%;
+}
+
+.ratingBox button {
+    width: 100%;
 }
 
 /* =========================================================
@@ -291,610 +754,140 @@ button:active {
 
 .commentBox {
     margin-top: 18px;
+
     padding: 15px;
-    background: #f8fafc;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
+
+    background: #111827;
+
+    border: 1px solid #263449;
+
+    border-radius: 11px;
 }
 
-.commentBox input {
-    width: 100%;
+.commentBox h3 {
+    color: #e2e8f0;
+
+    font-size: 17px;
 }
 
 .commentBox p {
-    padding: 10px 0;
     margin: 0;
-    border-bottom: 1px solid #e5e7eb;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #263449;
+
+    color: #94a3b8;
 }
-
-/* =========================================================
-   CREATOR VIDEOS
-   ========================================================= */
-
-.creatorVideo {
-    background: white;
-    margin-bottom: 25px;
-    padding: 20px;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-}
-
-.creatorVideo h3 {
-    margin-top: 0;
-}
-
-.creatorVideo video {
-    width: 100%;
-    max-width: 700px;
-    border-radius: 10px;
-}
-
-/* =========================================================
-   FORMS
-   ========================================================= */
-
-form {
-    margin-top: 15px;
-}
-
-form label {
-    display: block;
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-/* =========================================================
-   MESSAGES
-   ========================================================= */
-
-.success {
-    color: #166534;
-    background: #dcfce7;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-.error {
-    color: #991b1b;
-    background: #fee2e2;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* =========================================================
-   HORIZONTAL LINE
-   ========================================================= */
-
-hr {
-    border: 0;
-    border-top: 1px solid #e5e7eb;
-    margin: 30px 0;
-}
-
-/* =========================================================
-   CREATOR DASHBOARD
-   ========================================================= */
-
-.dashboardHeader {
-    background: linear-gradient(
-        135deg,
-        #111827,
-        #374151
-    );
-
-    color: white;
-    padding: 30px;
-    border-radius: 14px;
-    margin-bottom: 25px;
-}
-
-.dashboardHeader h1 {
-    color: white;
-    margin-top: 0;
-}
-
-/* =========================================================
-   RESPONSIVE DESIGN
-   ========================================================= */
-
-@media (max-width: 800px) {
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .navbar a {
-        margin-left: 0;
-        margin-right: 15px;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .videoGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        width: 95%;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .searchBox {
-        flex-direction: column;
-    }
-
-    .panel {
-        padding: 18px;
-    }
-
-    .hero {
-        padding: 30px 20px;
-    }
-
-    .hero h1 {
-        font-size: 26px;
-    }
-
-    .videoCard video {
-        height: 200px;
-    }
-}
-/* =========================================================
-   PROFESSIONAL VIDEO CARDS
-   ========================================================= */
-
-.videoGrid {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(320px, 1fr)
-    );
-    gap: 25px;
-}
-
-
-.videoCard {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    transition: transform 0.25s ease,
-                box-shadow 0.25s ease;
-}
-
-
-.videoCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
-}
-
-
-.videoCardMedia {
-    background: #000;
-}
-
-
-.videoCardMedia video {
-    width: 100%;
-    height: 220px;
-    display: block;
-    object-fit: cover;
-}
-
-
-.videoCardContent {
-    padding: 20px;
-}
-
-
-.videoCardContent h3 {
-    font-size: 20px;
-    margin: 0 0 12px 0;
-}
-
-
-.videoCreator {
-    color: #4b5563;
-    margin-bottom: 15px;
-}
-
-
-.videoMeta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-
-.videoMeta span {
-    background: #f3f4f6;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-
-.videoDetails {
-    padding: 12px 0;
-    border-top: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-
-.videoDetails p {
-    margin: 6px 0;
-    font-size: 14px;
-    color: #555;
-}
-
-
-.videoStats {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding: 12px;
-    background: #f8fafc;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-
-.videoCard .actions {
-    margin-top: 15px;
-}
-
-
-.videoCard .actions button {
-    width: 100%;
-}
-
-
-.videoCard .ratingBox {
-    margin-top: 18px;
-}
-
-
-.videoCard .ratingBox select {
-    width: 100%;
-}
-
-
-.videoCard .ratingBox button {
-    width: 100%;
-}
-
 
 .commentInput {
     margin-top: 12px;
 }
 
-
 .commentInput input {
     margin-bottom: 8px;
 }
-
 
 .commentInput button {
     width: 100%;
 }
 
-
-.commentBox h3 {
-    font-size: 17px;
-}
 /* =========================================================
-   VIDEO CATEGORIES
+   CREATOR DASHBOARD HEADER
    ========================================================= */
 
-.categoryBar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 20px 0;
-}
+.dashboardHeader {
+    padding: 35px;
 
-
-.categoryBar button {
-    background: #f3f4f6;
-    color: #111827;
-    border: 1px solid #d1d5db;
-    border-radius: 25px;
-    padding: 9px 15px;
-    font-weight: 600;
-}
-
-
-.categoryBar button:hover {
-    background: #111827;
-    color: white;
-}
-/* =========================================================
-   ACCOUNT AREA
-   ========================================================= */
-
-.accountGrid {
-    display: grid;
-    grid-template-columns: repeat(
-        2,
-        minmax(0, 1fr)
-    );
-
-    gap: 25px;
     margin-bottom: 25px;
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(59, 130, 246, 0.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #312e81
+        );
+
+    border: 1px solid
+        rgba(147, 197, 253, 0.2);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-
-.accountPanel {
-    margin-bottom: 0;
-}
-
-
-.accountPanel h2 {
-    font-size: 24px;
-    margin-bottom: 8px;
-}
-
-
-.accountPanel > p {
-    color: #6b7280;
-}
-
-
-.accountPanel form {
-    margin-top: 20px;
-}
-
-
-.accountPanel button {
-    width: 100%;
-    padding: 13px;
-}
-
-
-#loginMessage,
-#registerMessage {
-    margin-top: 15px;
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   LOGGED-IN USER PANEL
-   ========================================================= */
-
-#userSection {
-    background: linear-gradient(
-        135deg,
-        #111827,
-        #374151
-    );
+.dashboardHeader h1 {
+    margin: 0;
 
     color: white;
+
+    font-size: 32px;
 }
-
-
-#userSection h2 {
-    color: white;
-    margin-top: 0;
-    font-size: 26px;
-}
-
-
-#userSection p {
-    color: #e5e7eb;
-}
-
-
-#userSection .actions {
-    margin-top: 20px;
-}
-
-
-#userSection .actions button {
-    width: auto;
-}
-
 
 /* =========================================================
-   MOBILE ACCOUNT LAYOUT
-   ========================================================= */
-
-@media (max-width: 750px) {
-
-    .accountGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .accountPanel {
-        margin-bottom: 0;
-    }
-
-}
-/* =========================================================
-   CREATOR DASHBOARD
+   CREATOR INFO
    ========================================================= */
 
 .creatorInfo {
     margin-bottom: 25px;
 }
 
-
 .creatorInfoGrid {
     display: grid;
-    grid-template-columns: repeat(
-        3,
-        1fr
-    );
+
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 18px;
 }
 
-
 .infoCard {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
 
-    background: #f8fafc;
+    flex-direction: column;
+
+    gap: 6px;
 
     padding: 20px;
 
-    border-radius: 12px;
+    background: #111827;
 
-    border: 1px solid #e5e7eb;
+    border: 1px solid #263449;
+
+    border-radius: 13px;
+
+    transition: 0.2s;
 }
 
+.infoCard:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(59, 130, 246, 0.4);
+}
 
 .infoIcon {
-    font-size: 28px;
+    font-size: 27px;
+
     margin-bottom: 5px;
 }
 
-
 .infoCard strong {
-    color: #111827;
+    color: #e2e8f0;
 }
-
 
 .infoCard span:last-child {
-    color: #6b7280;
-    font-size: 14px;
+    color: #64748b;
+
+    font-size: 13px;
 }
 
-
-/* =========================================================
-   CREATOR UPLOAD
-   ========================================================= */
-
-.creatorUpload {
-    margin-bottom: 25px;
-}
-
-
-.creatorUpload > p {
-    color: #6b7280;
-}
-
-
-.formGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-
-.creatorUpload button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 5px;
-}
-
-
-/* =========================================================
-   CREATOR VIDEO GRID
-   ========================================================= */
-
-.creatorVideoGrid {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(300px, 1fr)
-    );
-
-    gap: 25px;
-}
-
-
-.creatorVideo {
-    background: white;
-    padding: 0;
-    margin: 0;
-
-    border-radius: 14px;
-
-    overflow: hidden;
-
-    border: 1px solid #e5e7eb;
-
-    box-shadow:
-        0 4px 15px
-        rgba(0, 0, 0, 0.08);
-
-    transition: 0.25s;
-}
-
-
-.creatorVideo:hover {
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.12);
-}
-
-
-.creatorVideo h3 {
-    margin: 0;
-    padding: 20px 20px 10px 20px;
-
-    font-size: 19px;
-}
-
-
-.creatorVideo p {
-    margin: 7px 20px;
-
-    color: #555;
-
-    font-size: 14px;
-}
-
-
-.creatorVideo video {
-    width: 100%;
-    max-width: none;
-
-    height: 220px;
-
-    display: block;
-
-    object-fit: cover;
-
-    background: #000;
-
-    margin-top: 15px;
-}
-
-
-/* =========================================================
-   CREATOR DASHBOARD RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 800px) {
-
-    .creatorInfoGrid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .formGrid {
-        grid-template-columns: 1fr;
-    }
-
-}
 /* =========================================================
    CREATOR STATISTICS
    ========================================================= */
@@ -910,16 +903,7 @@ hr {
     margin-bottom: 25px;
 }
 
-
 .statCard {
-    background: white;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 14px;
-
-    padding: 25px;
-
     display: flex;
 
     flex-direction: column;
@@ -930,74 +914,147 @@ hr {
 
     text-align: center;
 
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #172033,
+            #0f172a
+        );
+
+    border: 1px solid #263449;
+
+    border-radius: 15px;
+
     box-shadow:
-        0 4px 15px
-        rgba(0, 0, 0, 0.07);
+        0 8px 25px rgba(0, 0, 0, 0.2);
 
     transition: 0.25s;
 }
 
-
 .statCard:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.11);
+    border-color:
+        rgba(59, 130, 246, 0.4);
 }
-
 
 .statIcon {
     font-size: 30px;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
-
 .statLabel {
-    color: #6b7280;
+    color: #64748b;
 
-    font-size: 14px;
+    font-size: 12px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
-
 
 .statCard strong {
-    color: #111827;
+    margin-top: 7px;
+
+    color: #60a5fa;
 
     font-size: 32px;
-
-    margin-top: 8px;
 }
 
-
 /* =========================================================
-   MOBILE STATISTICS
+   CREATOR UPLOAD
    ========================================================= */
 
-@media (max-width: 700px) {
-
-    .creatorStats {
-        grid-template-columns: 1fr;
-    }
-
+.creatorUpload {
+    margin-bottom: 25px;
 }
+
+.creatorUpload > p {
+    color: #94a3b8;
+}
+
+.formGrid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+.creatorUpload button {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 5px;
+}
+
 /* =========================================================
-   PROFESSIONAL CREATOR VIDEO CARDS
+   CREATOR VIDEO GRID
+   ========================================================= */
+
+.creatorVideoGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.creatorVideo {
+    overflow: hidden;
+
+    padding: 0;
+
+    margin: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #172033,
+            #0f172a
+        );
+
+    border: 1px solid #263449;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.creatorVideo:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 16px 35px rgba(0, 0, 0, 0.32);
+}
+
+/* =========================================================
+   CREATOR VIDEO MEDIA
    ========================================================= */
 
 .creatorVideoMedia {
     background: #000;
 }
 
-
 .creatorVideoMedia video {
     width: 100%;
+
     height: 220px;
 
     display: block;
@@ -1007,23 +1064,46 @@ hr {
     background: #000;
 }
 
+.creatorVideo video {
+    width: 100%;
+
+    height: 220px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #000;
+}
+
+/* =========================================================
+   CREATOR VIDEO CONTENT
+   ========================================================= */
 
 .creatorVideoContent {
     padding: 20px;
 }
 
-
 .creatorVideoContent h3 {
-    margin: 0 0 15px 0;
+    margin: 0 0 15px;
+
+    color: #f8fafc;
 
     font-size: 20px;
-
-    color: #111827;
 }
 
+.creatorVideo h3 {
+    color: #f8fafc;
+}
+
+.creatorVideo p {
+    color: #94a3b8;
+
+    font-size: 14px;
+}
 
 /* =========================================================
-   VIDEO TAGS
+   CREATOR VIDEO TAGS
    ========================================================= */
 
 .creatorVideoTags {
@@ -1036,33 +1116,31 @@ hr {
     margin-bottom: 18px;
 }
 
-
 .creatorVideoTags span {
-    background: #f3f4f6;
+    background: #1e293b;
 
-    color: #374151;
+    color: #cbd5e1;
+
+    border: 1px solid #334155;
 
     border-radius: 20px;
 
-    padding: 6px 10px;
+    padding: 5px 10px;
 
-    font-size: 13px;
+    font-size: 12px;
 
-    font-weight: 600;
+    font-weight: 650;
 }
 
-
 /* =========================================================
-   VIDEO DETAILS
+   CREATOR VIDEO DETAILS
    ========================================================= */
 
 .creatorVideoDetails {
-    border-top:
-        1px solid #e5e7eb;
+    border-top: 1px solid #263449;
 
     padding-top: 12px;
 }
-
 
 .creatorVideoDetails p {
     display: flex;
@@ -1073,74 +1151,37 @@ hr {
 
     margin: 8px 0;
 
-    font-size: 14px;
+    color: #64748b;
 
-    color: #6b7280;
+    font-size: 13px;
 }
-
 
 .creatorVideoDetails strong {
-    color: #374151;
+    color: #cbd5e1;
 }
-
 
 .creatorVideoDetails span {
     text-align: right;
 }
 
-
-/* =========================================================
-   CREATOR CARD HOVER
-   ========================================================= */
-
-.creatorVideo {
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-.creatorVideo:hover {
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.12);
-}
-
-
-/* =========================================================
-   MOBILE CREATOR CARDS
-   ========================================================= */
-
-@media (max-width: 500px) {
-
-    .creatorVideoDetails p {
-        flex-direction: column;
-
-        gap: 3px;
-    }
-
-
-    .creatorVideoDetails span {
-        text-align: left;
-    }
-
-}
 /* =========================================================
    CREATOR VIDEO ACTIONS
    ========================================================= */
 
 .creatorVideoActions {
-    padding: 0 20px 20px 20px;
+    display: flex;
+
+    gap: 10px;
+
+    padding: 0 20px 20px;
 }
 
+.creatorVideoActions button {
+    flex: 1;
+}
 
 .deleteVideoButton {
-    width: 100%;
-
-    background: #dc2626;
+    background: #dc2626 !important;
 
     color: white;
 
@@ -1150,36 +1191,66 @@ hr {
 
     padding: 11px 15px;
 
-    font-weight: 600;
+    font-weight: 650;
 
     cursor: pointer;
-
-    transition:
-        background 0.2s ease;
 }
-
 
 .deleteVideoButton:hover {
-    background: #b91c1c;
+    background: #b91c1c !important;
+
+    box-shadow:
+        0 8px 18px rgba(220, 38, 38, 0.25);
 }
+
+.editVideoButton {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    border-radius: 8px;
+
+    padding: 11px 15px;
+
+    font-weight: 650;
+}
+
+.editVideoButton:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+}
+
 /* =========================================================
    EDIT VIDEO
    ========================================================= */
 
 .editVideoPanel {
-    border: 2px solid #e5e7eb;
-}
+    border: 1px solid #3b82f6;
 
+    background:
+        linear-gradient(
+            145deg,
+            #172554,
+            #111827
+        );
+}
 
 .editVideoPanel h2 {
     margin-bottom: 8px;
 }
 
-
 .editVideoPanel > p {
-    color: #6b7280;
+    color: #93c5fd;
 }
-
 
 .editActions {
     display: flex;
@@ -1189,71 +1260,300 @@ hr {
     margin-top: 10px;
 }
 
-
 .editActions button {
     flex: 1;
 }
 
-
 .editActions button[type="button"] {
-    background: #6b7280;
+    background: #475569;
 }
-
 
 .editActions button[type="button"]:hover {
-    background: #4b5563;
+    background: #334155;
 }
-
 
 /* =========================================================
-   VIDEO ACTION BUTTONS
+   MESSAGES
    ========================================================= */
 
-.creatorVideoActions {
-    display: flex;
+.success {
+    color: #86efac;
 
-    gap: 10px;
+    background: rgba(22, 101, 52, 0.18);
 
-    padding: 0 20px 20px 20px;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    margin-top: 10px;
 }
 
+.error {
+    color: #fca5a5;
 
-.creatorVideoActions button {
-    flex: 1;
+    background: rgba(127, 29, 29, 0.18);
+
+    border: 1px solid rgba(239, 68, 68, 0.25);
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    margin-top: 10px;
 }
 
+/* =========================================================
+   HORIZONTAL LINE
+   ========================================================= */
 
-.editVideoButton {
-    background: #2563eb;
+hr {
+    border: 0;
 
-    color: white;
+    border-top: 1px solid #263449;
 
-    border: none;
+    margin: 30px 0;
+}
 
-    border-radius: 8px;
+/* =========================================================
+   CONSUMER UPLOAD
+   ========================================================= */
 
-    padding: 11px 15px;
+#consumerUploadSection {
+    background:
+        linear-gradient(
+            145deg,
+            #172554,
+            #111827
+        );
 
-    font-weight: 600;
+    border-color:
+        rgba(59, 130, 246, 0.25);
+}
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
+input[type="file"] {
+    padding: 12px;
+
+    background: #111827;
+
+    color: #94a3b8;
 
     cursor: pointer;
 }
 
+input[type="file"]::file-selector-button {
+    margin-right: 12px;
 
-.editVideoButton:hover {
-    background: #1d4ed8;
+    padding: 8px 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 600;
 }
 
+/* =========================================================
+   SELECT DROPDOWN
+   ========================================================= */
 
-@media (max-width: 500px) {
+select {
+    cursor: pointer;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b1120;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 14px;
+
+        padding: 16px 25px;
+    }
+
+    .navbar div {
+        flex-wrap: wrap;
+
+        gap: 5px;
+    }
+
+    .navbar a {
+        padding: 7px 10px;
+    }
+
+    .hero {
+        padding: 50px 30px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .videoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .creatorInfoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .creatorStats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .accountGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .accountPanel {
+        margin-bottom: 20px;
+    }
+
+    .searchBox {
+        flex-direction: column;
+    }
+
+    .searchBox button {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+
+        margin-top: 20px;
+    }
+
+    .panel {
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .hero {
+        padding: 40px 22px;
+
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .categoryBar {
+        gap: 7px;
+    }
+
+    .categoryBar button {
+        font-size: 12px;
+
+        padding: 7px 11px;
+    }
+
+    .videoCardMedia video,
+    .videoCard video,
+    .creatorVideoMedia video,
+    .creatorVideo video {
+        height: 200px;
+    }
 
     .creatorVideoActions {
         flex-direction: column;
     }
 
-
     .editActions {
         flex-direction: column;
     }
+}
 
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .navbar h1 {
+        font-size: 22px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .panel h2 {
+        font-size: 21px;
+    }
+
+    .videoCardContent,
+    .creatorVideoContent {
+        padding: 16px;
+    }
+
+    .videoStats {
+        flex-direction: column;
+    }
 }

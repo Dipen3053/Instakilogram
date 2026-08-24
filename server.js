@@ -1598,7 +1598,7 @@ initialiseAzureData()
                     );
 
                     console.log(
-                        "Instakilogram is running!"
+                        "ICloudfisk is running!"
                     );
 
                     console.log(

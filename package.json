@@ -1,7 +1,7 @@
 {
-  "name": "instakilogram",
+  "name": "Cloudfisk",
   "version": "1.0.0",
-  "description": "Instakilogram video sharing website",
+  "description": "Cloudfisk video sharing website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

@@ -1,190 +1,252 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Cloudfisk</title>
 
-    <title>Instakilogram</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-<!-- ================================================= -->
-<!-- NAVIGATION -->
-<!-- ================================================= -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav class="navbar">
 
-    <h1>
-        Instakilogram
-    </h1>
+    <div class="brand">
+        <div class="brandIcon">C</div>
 
-    <div>
+        <div>
+            <h1>Cloudfisk</h1>
+            <span>Video Platform</span>
+        </div>
+    </div>
 
-        <a href="#home">
-            Home
-        </a>
+    <div class="navLinks">
 
-        <a href="#videos">
-            Videos
-        </a>
+        <a href="#home">Home</a>
 
-        <a href="#upload">
-            Upload
-        </a>
+        <a href="#videos">Explore</a>
 
-        <a href="#loginSection">
-            Login
-        </a>
+        <a href="#upload">Upload</a>
+
+        <a href="#loginSection">Account</a>
 
     </div>
 
 </nav>
 
 
-<!-- ================================================= -->
-<!-- MAIN CONTENT -->
-<!-- ================================================= -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main class="container" id="home">
 
 
-    <!-- ================================================= -->
-    <!-- HERO -->
-    <!-- ================================================= -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
-        <h1>
-            Discover. Share. Enjoy.
-        </h1>
+        <div class="heroContent">
 
-        <p>
-            Welcome to Instakilogram — your place to
-            discover, watch, share, like and rate videos.
-        </p>
+            <div class="heroBadge">
+                ● ONLINE VIDEO COMMUNITY
+            </div>
 
-    </section>
+            <h1>
+                Your world.<br>
+                <span>Your videos.</span><br>
+                Your space.
+            </h1>
 
+            <p>
+                Discover new content, share your creativity,
+                connect with creators and enjoy videos in one
+                simple platform.
+            </p>
 
-    <!-- ================================================= -->
-    <!-- LOGIN -->
-    <!-- ================================================= -->
+            <div class="heroButtons">
 
-    <section
-    id="loginSection"
-    class="panel accountPanel"
->
-<div class="accountGrid"></div>
+                <a href="#videos" class="heroButton">
+                    Explore Videos →
+                </a>
 
-        <h2>
-            Welcome Back
-        </h2>
+                <a href="#loginSection" class="heroButton secondary">
+                    Join Cloudfisk
+                </a>
 
-        <p>
-            Login to your Instakilogram account.
-        </p>
+            </div>
 
-        <form id="loginForm">
+        </div>
 
-            <input
-                type="text"
-                id="loginUsername"
-                placeholder="Username"
-                required
-            >
+        <div class="heroVisual">
 
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Password"
-                required
-            >
+            <div class="floatingCard cardOne">
+                ▶
+            </div>
 
-            <button type="submit">
-                Login
-            </button>
+            <div class="floatingCard cardTwo">
+                ★
+            </div>
 
-        </form>
+            <div class="playCircle">
+                ▶
+            </div>
 
-        <p id="loginMessage"></p>
+        </div>
 
     </section>
 
 
-    <!-- ================================================= -->
-    <!-- REGISTER -->
-    <!-- ================================================= -->
+    <!-- =========================
+         ACCOUNT AREA
+    ========================= -->
 
-    <section
-        id="registerSection"
-        class="panel accountPanel"
-    >
+    <div class="accountGrid">
 
-        <h2>
-            Join Instakilogram
-        </h2>
 
-        <p>
-            Create your consumer account and start sharing videos.
-        </p>
+        <!-- LOGIN -->
 
-        <form id="registerForm">
+        <section
+            id="loginSection"
+            class="panel accountPanel"
+        >
 
-            <input
-                type="text"
-                id="registerUsername"
-                placeholder="Choose a username"
-                required
-            >
+            <div class="sectionIcon">
+                🔐
+            </div>
 
-            <input
-                type="password"
-                id="registerPassword"
-                placeholder="Create a password"
-                required
-            >
+            <h2>
+                Welcome back
+            </h2>
 
-            <button type="submit">
-                Create Account
-            </button>
+            <p>
+                Sign in to continue exploring Cloudfisk.
+            </p>
 
-        </form>
+            <form id="loginForm">
 
-        <p id="registerMessage"></p>
+                <label for="loginUsername">
+                    Username
+                </label>
 
-    </section>
+                <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Enter your username"
+                    required
+                >
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit">
+                    Sign In →
+                </button>
+
+            </form>
+
+            <p id="loginMessage"></p>
+
+        </section>
+
+
+        <!-- REGISTER -->
+
+        <section
+            id="registerSection"
+            class="panel accountPanel"
+        >
+
+            <div class="sectionIcon purple">
+                ✦
+            </div>
+
+            <h2>
+                Create your account
+            </h2>
+
+            <p>
+                Join the Cloudfisk community and start sharing.
+            </p>
+
+            <form id="registerForm">
+
+                <label for="registerUsername">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Choose a username"
+                    required
+                >
+
+                <label for="registerPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    required
+                >
+
+                <button type="submit">
+                    Create Account →
+                </button>
+
+            </form>
+
+            <p id="registerMessage"></p>
+
+        </section>
+
     </div>
 
 
-    <!-- ================================================= -->
-    <!-- USER ACCOUNT -->
-    <!-- ================================================= -->
+    <!-- =========================
+         USER ACCOUNT
+    ========================= -->
 
     <section
         id="userSection"
-        class="panel"
+        class="panel userPanel"
         style="display:none;"
     >
 
-        <h2 id="welcomeText"></h2>
+        <div>
 
-        <p>
-            You are logged in to Instakilogram.
-        </p>
+            <span class="onlineBadge">
+                ● ACCOUNT ACTIVE
+            </span>
+
+            <h2 id="welcomeText"></h2>
+
+            <p>
+                You are signed in to Cloudfisk.
+            </p>
+
+        </div>
 
         <div class="actions">
 
@@ -205,64 +267,86 @@
     </section>
 
 
-    <!-- ================================================= -->
-    <!-- SEARCH -->
-    <!-- ================================================= -->
+    <!-- =========================
+         DISCOVER
+    ========================= -->
 
-    <section class="panel">
+    <section class="discoverHeader">
 
-        <h2>
-            Discover Videos
-        </h2>
+        <div>
 
-        <p>
-            Search for videos by title, creator, genre or other information.
-        </p>
+            <span class="smallTitle">
+                EXPLORE
+            </span>
+
+            <h2>
+                Discover something new
+            </h2>
+
+            <p>
+                Browse videos from the Cloudfisk community.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <section class="panel searchPanel">
+
+        <div class="categoryBar">
+
+            <button onclick="filterByGenre('All')">
+                ✦ All
+            </button>
+
+            <button onclick="filterByGenre('Music')">
+                ♪ Music
+            </button>
+
+            <button onclick="filterByGenre('Comedy')">
+                ◉ Comedy
+            </button>
+
+            <button onclick="filterByGenre('Gaming')">
+                ◈ Gaming
+            </button>
+
+            <button onclick="filterByGenre('Sports')">
+                ⚡ Sports
+            </button>
+
+            <button onclick="filterByGenre('Education')">
+                ◆ Education
+            </button>
+
+            <button onclick="filterByGenre('News')">
+                ● News
+            </button>
+
+        </div>
+
 
         <div class="searchBox">
-            <div class="categoryBar">
-
-    <button onclick="filterByGenre('All')">
-        🎬 All
-    </button>
-
-    <button onclick="filterByGenre('Music')">
-        🎵 Music
-    </button>
-
-    <button onclick="filterByGenre('Comedy')">
-        😂 Comedy
-    </button>
-
-    <button onclick="filterByGenre('Gaming')">
-        🎮 Gaming
-    </button>
-
-    <button onclick="filterByGenre('Sports')">
-        ⚽ Sports
-    </button>
-
-    <button onclick="filterByGenre('Education')">
-        📚 Education
-    </button>
-
-    <button onclick="filterByGenre('News')">
-        📰 News
-    </button>
-
-</div>
 
             <input
                 type="text"
                 id="searchInput"
-                placeholder="Search videos..."
+                placeholder="Search videos, creators, genres..."
             >
 
             <button onclick="searchVideos()">
                 Search
             </button>
 
-            <button onclick="loadVideos()">
+            <button
+                class="showAllButton"
+                onclick="loadVideos()"
+            >
                 Show All
             </button>
 
@@ -271,18 +355,35 @@
     </section>
 
 
-    <!-- ================================================= -->
-    <!-- VIDEO SECTION -->
-    <!-- ================================================= -->
+    <!-- =========================
+         VIDEO SECTION
+    ========================= -->
 
-   <section
-    id="videos"
-    class="panel videoGrid"
->
+    <section
+        id="videos"
+        class="videoSection"
+    >
 
-        <h2>
-            Latest Videos
-        </h2>
+        <div class="videoSectionHeader">
+
+            <div>
+
+                <span class="smallTitle">
+                    COMMUNITY
+                </span>
+
+                <h2>
+                    Latest videos
+                </h2>
+
+            </div>
+
+            <span class="videoCount">
+                Fresh content
+            </span>
+
+        </div>
+
 
         <div id="videoContent">
 
@@ -293,142 +394,186 @@
     </section>
 
 
-    <!-- ================================================= -->
-    <!-- CONSUMER UPLOAD -->
-    <!-- ================================================= -->
+    <!-- =========================
+         CONSUMER UPLOAD
+    ========================= -->
 
     <section
         id="consumerUploadSection"
-        class="panel"
+        class="panel uploadPanel"
         style="display:none;"
     >
 
-        <h2>
-            Upload Your Video
-        </h2>
+        <div class="uploadHeader">
 
-        <p>
-            Share your video with the Instakilogram community.
-        </p>
+            <span class="sectionIcon">
+                ↑
+            </span>
+
+            <div>
+
+                <h2>
+                    Upload your video
+                </h2>
+
+                <p>
+                    Share your creativity with the Cloudfisk community.
+                </p>
+
+            </div>
+
+        </div>
+
 
         <form id="consumerUploadForm">
 
-            <label for="consumerTitle">
-                Video Title
-            </label>
+            <div class="formGrid">
 
-            <input
-                type="text"
-                id="consumerTitle"
-                placeholder="Enter your video title"
-                required
+                <div>
+
+                    <label for="consumerTitle">
+                        Video Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="consumerTitle"
+                        placeholder="Give your video a title"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="consumerPublisher">
+                        Publisher
+                    </label>
+
+                    <input
+                        type="text"
+                        id="consumerPublisher"
+                        placeholder="Publisher"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="consumerProducer">
+                        Producer
+                    </label>
+
+                    <input
+                        type="text"
+                        id="consumerProducer"
+                        placeholder="Producer"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="consumerGenre">
+                        Genre
+                    </label>
+
+                    <select id="consumerGenre">
+
+                        <option value="Comedy">
+                            Comedy
+                        </option>
+
+                        <option value="Music">
+                            Music
+                        </option>
+
+                        <option value="Gaming">
+                            Gaming
+                        </option>
+
+                        <option value="Sports">
+                            Sports
+                        </option>
+
+                        <option value="Education">
+                            Education
+                        </option>
+
+                        <option value="News">
+                            News
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="consumerAgeRating">
+                        Age Rating
+                    </label>
+
+                    <select id="consumerAgeRating">
+
+                        <option value="U">
+                            U
+                        </option>
+
+                        <option value="PG">
+                            PG
+                        </option>
+
+                        <option value="12">
+                            12
+                        </option>
+
+                        <option value="15">
+                            15
+                        </option>
+
+                        <option value="18">
+                            18
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="consumerVideo">
+                        Choose Video
+                    </label>
+
+                    <input
+                        type="file"
+                        id="consumerVideo"
+                        accept="video/*"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="uploadButton"
+                type="submit"
             >
-
-
-            <label for="consumerPublisher">
-                Publisher
-            </label>
-
-            <input
-                type="text"
-                id="consumerPublisher"
-                placeholder="Publisher"
-                required
-            >
-
-
-            <label for="consumerProducer">
-                Producer
-            </label>
-
-            <input
-                type="text"
-                id="consumerProducer"
-                placeholder="Producer"
-                required
-            >
-
-
-            <label for="consumerGenre">
-                Genre
-            </label>
-
-            <select id="consumerGenre">
-
-                <option value="Comedy">
-                    Comedy
-                </option>
-
-                <option value="Music">
-                    Music
-                </option>
-
-                <option value="Gaming">
-                    Gaming
-                </option>
-
-                <option value="Sports">
-                    Sports
-                </option>
-
-                <option value="Education">
-                    Education
-                </option>
-
-                <option value="News">
-                    News
-                </option>
-
-                <option value="Other">
-                    Other
-                </option>
-
-            </select>
-
-
-            <label for="consumerAgeRating">
-                Age Rating
-            </label>
-
-            <select id="consumerAgeRating">
-
-                <option value="U">
-                    U
-                </option>
-
-                <option value="PG">
-                    PG
-                </option>
-
-                <option value="12">
-                    12
-                </option>
-
-                <option value="15">
-                    15
-                </option>
-
-                <option value="18">
-                    18
-                </option>
-
-            </select>
-
-
-            <label for="consumerVideo">
-                Choose Video
-            </label>
-
-            <input
-                type="file"
-                id="consumerVideo"
-                accept="video/*"
-                required
-            >
-
-
-            <button type="submit">
-                Upload Video
+                Upload Video →
             </button>
 
         </form>
@@ -442,12 +587,30 @@
 </main>
 
 
-<!-- ================================================= -->
-<!-- JAVASCRIPT -->
-<!-- ================================================= -->
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footerBrand">
+        <strong>Cloudfisk</strong>
+
+        <span>
+            Your world. Your videos. Your space.
+        </span>
+    </div>
+
+    <div>
+        © 2026 Cloudfisk
+    </div>
+
+</footer>
+
 
 <script src="app.js"></script>
 
 </body>
 
 </html>
+```

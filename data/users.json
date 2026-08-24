@@ -22,5 +22,11 @@
     "username": "nepal",
     "password": "nepali",
     "role": "consumer"
+  },
+  {
+    "id": 1787562448664,
+    "username": "admin",
+    "password": "12345",
+    "role": "consumer"
   }
 ]

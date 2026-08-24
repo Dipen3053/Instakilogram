@@ -3,6 +3,6 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/861c6918-260f-4e6d-8e02-ee01be9e8ac2/resourceGroups/instakilogram-rg/providers/Microsoft.Web/sites/instakilogram-api-3053",
+    "appService.defaultWebAppToDeploy": "/subscriptions/861c6918-260f-4e6d-8e02-ee01be9e8ac2/resourceGroups/Cloudfisk-rg/providers/Microsoft.Web/sites/Cloudfisk-api-3053",
     "appService.deploySubpath": "."
 }
