@@ -1210,55 +1210,128 @@ async function searchVideos() {
 
 
 // ======================================================
-// CONSUMER UPLOAD
+// CONSUMER VIDEO UPLOAD
 // ======================================================
 
 const consumerUploadForm =
-    document.getElementById(
-        "consumerUploadForm"
-    );
-
+    document.getElementById("consumerUploadForm");
 
 if (consumerUploadForm) {
 
     consumerUploadForm.addEventListener(
         "submit",
-        async function(event) {
+        async function (event) {
 
             event.preventDefault();
 
+            const message =
+                document.getElementById(
+                    "consumerUploadMessage"
+                );
+
+            message.textContent =
+                "Uploading video to Azure...";
+
+            message.className = "";
 
             const user =
                 getCurrentUser();
 
-
             if (!user) {
 
-                alert(
-                    "Please login first."
-                );
+                message.textContent =
+                    "Please login first.";
+
+                message.className =
+                    "error";
 
                 return;
-
             }
 
 
-            const file =
+            // --------------------------------------------------
+            // GET VIDEO FILE
+            // --------------------------------------------------
+
+            const fileInput =
                 document.getElementById(
                     "consumerVideo"
-                ).files[0];
+                );
+
+            const file =
+                fileInput.files[0];
 
 
             if (!file) {
 
-                alert(
-                    "Please select a video."
-                );
+                message.textContent =
+                    "Please select a video.";
+
+                message.className =
+                    "error";
 
                 return;
-
             }
 
+
+            // --------------------------------------------------
+            // CHECK FILE TYPE
+            // --------------------------------------------------
+
+            if (
+                !file.type.startsWith("video/")
+            ) {
+
+                message.textContent =
+                    "Please select a valid video file.";
+
+                message.className =
+                    "error";
+
+                return;
+            }
+
+
+            // --------------------------------------------------
+            // CHECK FILE SIZE
+            // --------------------------------------------------
+
+            const maxSize =
+                200 * 1024 * 1024;
+
+
+            if (file.size > maxSize) {
+
+                message.textContent =
+                    "Video is too large. Maximum size is 200 MB.";
+
+                message.className =
+                    "error";
+
+                return;
+            }
+
+
+            console.log(
+                "Video selected:",
+                file.name
+            );
+
+            console.log(
+                "Video type:",
+                file.type
+            );
+
+            console.log(
+                "Video size:",
+                file.size,
+                "bytes"
+            );
+
+
+            // --------------------------------------------------
+            // CREATE FORM DATA
+            // --------------------------------------------------
 
             const formData =
                 new FormData();
@@ -1274,7 +1347,7 @@ if (consumerUploadForm) {
                 "title",
                 document.getElementById(
                     "consumerTitle"
-                ).value
+                ).value.trim()
             );
 
 
@@ -1282,7 +1355,7 @@ if (consumerUploadForm) {
                 "publisher",
                 document.getElementById(
                     "consumerPublisher"
-                ).value
+                ).value.trim()
             );
 
 
@@ -1290,7 +1363,7 @@ if (consumerUploadForm) {
                 "producer",
                 document.getElementById(
                     "consumerProducer"
-                ).value
+                ).value.trim()
             );
 
 
@@ -1328,53 +1401,139 @@ if (consumerUploadForm) {
             );
 
 
+            // --------------------------------------------------
+            // UPLOAD TO BACKEND
+            // --------------------------------------------------
+
             try {
+
+                console.log(
+                    "Sending video to /api/videos/upload..."
+                );
+
 
                 const response =
                     await fetch(
-
                         "/api/videos/upload",
-
                         {
-
                             method: "POST",
-
-                            body:
-                                formData
-
+                            body: formData
                         }
-
                     );
 
 
-                const result =
-                    await response.json();
+                console.log(
+                    "Server response:",
+                    response.status
+                );
 
 
-                document.getElementById(
-                    "consumerUploadMessage"
-                ).textContent =
-                    result.message;
+                // --------------------------------------------------
+                // READ RESPONSE SAFELY
+                // --------------------------------------------------
+
+                const responseText =
+                    await response.text();
 
 
-                if (response.ok) {
+                console.log(
+                    "Server response body:",
+                    responseText
+                );
 
-                    consumerUploadForm.reset();
 
-                    loadVideos();
+                let result;
+
+
+                try {
+
+                    result =
+                        JSON.parse(
+                            responseText
+                        );
 
                 }
+
+                catch {
+
+                    result = {
+                        message:
+                            responseText ||
+                            "Server returned an invalid response."
+                    };
+
+                }
+
+
+                // --------------------------------------------------
+                // HANDLE ERROR
+                // --------------------------------------------------
+
+                if (!response.ok) {
+
+                    console.error(
+                        "UPLOAD ERROR:",
+                        result
+                    );
+
+
+                    message.textContent =
+                        result.message ||
+                        result.error ||
+                        `Upload failed. Server returned ${response.status}.`;
+
+
+                    message.className =
+                        "error";
+
+
+                    return;
+
+                }
+
+
+                // --------------------------------------------------
+                // SUCCESS
+                // --------------------------------------------------
+
+                console.log(
+                    "UPLOAD SUCCESS:",
+                    result
+                );
+
+
+                message.textContent =
+                    "Video uploaded successfully to Azure!";
+
+
+                message.className =
+                    "success";
+
+
+                consumerUploadForm.reset();
+
+
+                // Refresh videos
+
+                await loadVideos();
+
 
             }
 
             catch (error) {
 
-                console.error(error);
+                console.error(
+                    "UPLOAD REQUEST ERROR:",
+                    error
+                );
 
-                document.getElementById(
-                    "consumerUploadMessage"
-                ).textContent =
-                    "Upload failed.";
+
+                message.textContent =
+                    "Could not connect to the server. Check the browser console and Azure App Service logs.";
+
+
+                message.className =
+                    "error";
 
             }
 
@@ -1424,6 +1583,306 @@ function escapeHtml(value) {
 // GENRE FILTER
 // ======================================================
 
+// ======================================================
+// UPLOAD VIDEO TO AZURE BLOB STORAGE
+// ======================================================
+
+app.post(
+    "/api/videos/upload",
+    upload.single("video"),
+    async (req, res) => {
+
+        console.log("=================================");
+        console.log("VIDEO UPLOAD STARTED");
+        console.log("=================================");
+
+        try {
+
+            // --------------------------------------------------
+            // CHECK FILE
+            // --------------------------------------------------
+
+            if (!req.file) {
+
+                console.log("ERROR: No video file received.");
+
+                return res.status(400).json({
+                    message: "Please select a video."
+                });
+
+            }
+
+            console.log("File received:");
+            console.log("Original name:", req.file.originalname);
+            console.log("MIME type:", req.file.mimetype);
+            console.log("File size:", req.file.size);
+
+
+            // --------------------------------------------------
+            // CHECK AZURE CONNECTION
+            // --------------------------------------------------
+
+            if (!AZURE_STORAGE_CONNECTION_STRING) {
+
+                console.error(
+                    "ERROR: AZURE_STORAGE_CONNECTION_STRING is missing."
+                );
+
+                return res.status(500).json({
+                    message:
+                        "Azure Storage connection string is not configured."
+                });
+
+            }
+
+            console.log(
+                "Azure Storage connection string detected."
+            );
+
+
+            // --------------------------------------------------
+            // CREATE CONTAINER IF NEEDED
+            // --------------------------------------------------
+
+            console.log(
+                "Checking Azure videos container..."
+            );
+
+            await containerClient.createIfNotExists();
+
+            console.log(
+                "Azure videos container ready."
+            );
+
+
+            // --------------------------------------------------
+            // CREATE SAFE FILE NAME
+            // --------------------------------------------------
+
+            const safeName =
+                req.file.originalname.replace(
+                    /[^a-zA-Z0-9.-]/g,
+                    "_"
+                );
+
+
+            const blobName =
+                Date.now() +
+                "-" +
+                safeName;
+
+
+            console.log(
+                "Blob name:",
+                blobName
+            );
+
+
+            // --------------------------------------------------
+            // CREATE BLOB CLIENT
+            // --------------------------------------------------
+
+            const blockBlobClient =
+                containerClient.getBlockBlobClient(
+                    blobName
+                );
+
+
+            console.log(
+                "Uploading video to Azure Blob Storage..."
+            );
+
+
+            // --------------------------------------------------
+            // UPLOAD VIDEO
+            // --------------------------------------------------
+
+            await blockBlobClient.uploadData(
+                req.file.buffer,
+                {
+                    blobHTTPHeaders: {
+                        blobContentType:
+                            req.file.mimetype
+                    }
+                }
+            );
+
+
+            console.log(
+                "VIDEO SUCCESSFULLY UPLOADED TO AZURE!"
+            );
+
+
+            console.log(
+                "Blob URL:",
+                blockBlobClient.url
+            );
+
+
+            // --------------------------------------------------
+            // GET EXISTING VIDEOS
+            // --------------------------------------------------
+
+            const videos =
+                getVideos();
+
+
+            // --------------------------------------------------
+            // CREATE DATABASE RECORD
+            // --------------------------------------------------
+
+            const newVideo = {
+
+                id:
+                    Date.now(),
+
+                title:
+                    req.body.title ||
+                    "Untitled",
+
+                publisher:
+                    req.body.publisher ||
+                    "Unknown",
+
+                producer:
+                    req.body.producer ||
+                    "Unknown",
+
+                genre:
+                    req.body.genre ||
+                    "Other",
+
+                ageRating:
+                    req.body.ageRating ||
+                    "U",
+
+                videoUrl:
+                    blockBlobClient.url,
+
+                uploadedBy:
+                    Number(
+                        req.body.uploadedBy
+                    ),
+
+                uploadedByUsername:
+                    req.body.uploadedByUsername ||
+                    "",
+
+                uploadedByRole:
+                    req.body.uploadedByRole ||
+                    "",
+
+                likes:
+                    [],
+
+                ratings:
+                    [],
+
+                comments:
+                    [],
+
+                uploadedAt:
+                    new Date().toISOString()
+
+            };
+
+
+            // --------------------------------------------------
+            // SAVE VIDEO RECORD
+            // --------------------------------------------------
+
+            videos.push(
+                newVideo
+            );
+
+            saveVideos(
+                videos
+            );
+
+
+            console.log(
+                "Video record saved."
+            );
+
+
+            // --------------------------------------------------
+            // SEND SUCCESS RESPONSE
+            // --------------------------------------------------
+
+            console.log(
+                "================================="
+            );
+
+            console.log(
+                "UPLOAD COMPLETE"
+            );
+
+            console.log(
+                "================================="
+            );
+
+
+            return res.status(200).json({
+
+                message:
+                    "Video uploaded successfully.",
+
+                video:
+                    newVideo
+
+            });
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "================================="
+            );
+
+            console.error(
+                "AZURE VIDEO UPLOAD FAILED"
+            );
+
+            console.error(
+                "================================="
+            );
+
+            console.error(
+                "Error name:",
+                error.name
+            );
+
+            console.error(
+                "Error message:",
+                error.message
+            );
+
+            console.error(
+                "Error code:",
+                error.code
+            );
+
+            console.error(
+                "Full error:",
+                error
+            );
+
+
+            return res.status(500).json({
+
+                message:
+                    "Upload failed.",
+
+                error:
+                    error.message || "Unknown Azure error."
+
+            });
+
+        }
+
+    }
+);
 async function filterByGenre(genre) {
 
     try {
