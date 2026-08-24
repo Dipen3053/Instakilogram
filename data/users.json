@@ -16,5 +16,11 @@
     "username": "london",
     "password": "123456789",
     "role": "consumer"
+  },
+  {
+    "id": 1787546079068,
+    "username": "nepal",
+    "password": "nepali",
+    "role": "consumer"
   }
 ]
