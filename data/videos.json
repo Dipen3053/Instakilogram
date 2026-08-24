@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1787528890870,
+    "title": "my first instakilogram video",
+    "publisher": "instakilogram",
+    "producer": "dipen",
+    "genre": "Comedy",
+    "ageRating": "PG",
+    "videoUrl": "/uploads/1787528890844-WIN_20260823_22_47_26_Pro.mp4",
+    "uploadedBy": 1787528838287,
+    "uploadedByUsername": "london",
+    "uploadedByRole": "consumer",
+    "likes": [
+      1787528838287,
+      2
+    ],
+    "ratings": [
+      {
+        "userId": 1787528838287,
+        "rating": 3
+      }
+    ],
+    "comments": [],
+    "uploadedAt": "2026-08-23T23:48:10.870Z"
+  },
+  {
+    "id": 1787532848102,
+    "title": "my videos",
+    "publisher": "instakilogram",
+    "producer": "dipen",
+    "genre": "Gaming",
+    "ageRating": "12",
+    "videoUrl": "/uploads/1787532848049-WIN_20260823_22_46_33_Pro.mp4",
+    "uploadedBy": 2,
+    "uploadedByUsername": "creator1",
+    "uploadedByRole": "creator",
+    "likes": [
+      2
+    ],
+    "ratings": [],
+    "comments": [],
+    "uploadedAt": "2026-08-24T00:54:08.102Z"
+  },
+  {
+    "id": 1787543448254,
+    "title": "nature",
+    "publisher": "Instakilogram",
+    "producer": "Dipen",
+    "genre": "News",
+    "ageRating": "U",
+    "videoUrl": "https://instakilogramstorage3053.blob.core.windows.net/videos/1787543445640-0_Fall_Foliage_Autumn_Leaves_1280x720.mp4",
+    "uploadedBy": 2,
+    "uploadedByUsername": "creator1",
+    "uploadedByRole": "creator",
+    "likes": [],
+    "ratings": [],
+    "comments": [],
+    "uploadedAt": "2026-08-24T03:50:48.254Z"
+  }
+]

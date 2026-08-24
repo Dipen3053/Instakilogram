@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Instakilogram</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+<!-- ================================================= -->
+<!-- NAVIGATION -->
+<!-- ================================================= -->
+
+<nav class="navbar">
+
+    <h1>
+        Instakilogram
+    </h1>
+
+    <div>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#videos">
+            Videos
+        </a>
+
+        <a href="#upload">
+            Upload
+        </a>
+
+        <a href="#loginSection">
+            Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================================================= -->
+<!-- MAIN CONTENT -->
+<!-- ================================================= -->
+
+<main class="container" id="home">
+
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <section class="hero">
+
+        <h1>
+            Discover. Share. Enjoy.
+        </h1>
+
+        <p>
+            Welcome to Instakilogram — your place to
+            discover, watch, share, like and rate videos.
+        </p>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- LOGIN -->
+    <!-- ================================================= -->
+
+    <section
+    id="loginSection"
+    class="panel accountPanel"
+>
+<div class="accountGrid"></div>
+
+        <h2>
+            Welcome Back
+        </h2>
+
+        <p>
+            Login to your Instakilogram account.
+        </p>
+
+        <form id="loginForm">
+
+            <input
+                type="text"
+                id="loginUsername"
+                placeholder="Username"
+                required
+            >
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p id="loginMessage"></p>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- REGISTER -->
+    <!-- ================================================= -->
+
+    <section
+        id="registerSection"
+        class="panel accountPanel"
+    >
+
+        <h2>
+            Join Instakilogram
+        </h2>
+
+        <p>
+            Create your consumer account and start sharing videos.
+        </p>
+
+        <form id="registerForm">
+
+            <input
+                type="text"
+                id="registerUsername"
+                placeholder="Choose a username"
+                required
+            >
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create a password"
+                required
+            >
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <p id="registerMessage"></p>
+
+    </section>
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- USER ACCOUNT -->
+    <!-- ================================================= -->
+
+    <section
+        id="userSection"
+        class="panel"
+        style="display:none;"
+    >
+
+        <h2 id="welcomeText"></h2>
+
+        <p>
+            You are logged in to Instakilogram.
+        </p>
+
+        <div class="actions">
+
+            <button onclick="logout()">
+                Logout
+            </button>
+
+            <button
+                id="creatorDashboardButton"
+                onclick="goToCreatorDashboard()"
+                style="display:none;"
+            >
+                Creator Dashboard
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- SEARCH -->
+    <!-- ================================================= -->
+
+    <section class="panel">
+
+        <h2>
+            Discover Videos
+        </h2>
+
+        <p>
+            Search for videos by title, creator, genre or other information.
+        </p>
+
+        <div class="searchBox">
+            <div class="categoryBar">
+
+    <button onclick="filterByGenre('All')">
+        🎬 All
+    </button>
+
+    <button onclick="filterByGenre('Music')">
+        🎵 Music
+    </button>
+
+    <button onclick="filterByGenre('Comedy')">
+        😂 Comedy
+    </button>
+
+    <button onclick="filterByGenre('Gaming')">
+        🎮 Gaming
+    </button>
+
+    <button onclick="filterByGenre('Sports')">
+        ⚽ Sports
+    </button>
+
+    <button onclick="filterByGenre('Education')">
+        📚 Education
+    </button>
+
+    <button onclick="filterByGenre('News')">
+        📰 News
+    </button>
+
+</div>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search videos..."
+            >
+
+            <button onclick="searchVideos()">
+                Search
+            </button>
+
+            <button onclick="loadVideos()">
+                Show All
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- VIDEO SECTION -->
+    <!-- ================================================= -->
+
+   <section
+    id="videos"
+    class="panel videoGrid"
+>
+
+        <h2>
+            Latest Videos
+        </h2>
+
+        <div id="videoContent">
+
+            Loading videos...
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CONSUMER UPLOAD -->
+    <!-- ================================================= -->
+
+    <section
+        id="consumerUploadSection"
+        class="panel"
+        style="display:none;"
+    >
+
+        <h2>
+            Upload Your Video
+        </h2>
+
+        <p>
+            Share your video with the Instakilogram community.
+        </p>
+
+        <form id="consumerUploadForm">
+
+            <label for="consumerTitle">
+                Video Title
+            </label>
+
+            <input
+                type="text"
+                id="consumerTitle"
+                placeholder="Enter your video title"
+                required
+            >
+
+
+            <label for="consumerPublisher">
+                Publisher
+            </label>
+
+            <input
+                type="text"
+                id="consumerPublisher"
+                placeholder="Publisher"
+                required
+            >
+
+
+            <label for="consumerProducer">
+                Producer
+            </label>
+
+            <input
+                type="text"
+                id="consumerProducer"
+                placeholder="Producer"
+                required
+            >
+
+
+            <label for="consumerGenre">
+                Genre
+            </label>
+
+            <select id="consumerGenre">
+
+                <option value="Comedy">
+                    Comedy
+                </option>
+
+                <option value="Music">
+                    Music
+                </option>
+
+                <option value="Gaming">
+                    Gaming
+                </option>
+
+                <option value="Sports">
+                    Sports
+                </option>
+
+                <option value="Education">
+                    Education
+                </option>
+
+                <option value="News">
+                    News
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label for="consumerAgeRating">
+                Age Rating
+            </label>
+
+            <select id="consumerAgeRating">
+
+                <option value="U">
+                    U
+                </option>
+
+                <option value="PG">
+                    PG
+                </option>
+
+                <option value="12">
+                    12
+                </option>
+
+                <option value="15">
+                    15
+                </option>
+
+                <option value="18">
+                    18
+                </option>
+
+            </select>
+
+
+            <label for="consumerVideo">
+                Choose Video
+            </label>
+
+            <input
+                type="file"
+                id="consumerVideo"
+                accept="video/*"
+                required
+            >
+
+
+            <button type="submit">
+                Upload Video
+            </button>
+
+        </form>
+
+
+        <p id="consumerUploadMessage"></p>
+
+    </section>
+
+
+</main>
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

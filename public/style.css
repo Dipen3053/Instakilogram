@@ -1,0 +1,1259 @@
+/* =========================================================
+   INSTAKILOGRAM - MAIN DESIGN
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navbar {
+    background: #111827;
+    color: white;
+    padding: 16px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+    color: #111827;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 14px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+/* =========================================================
+   WELCOME / HERO SECTION
+   ========================================================= */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #374151
+    );
+
+    color: white;
+    padding: 45px 30px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 17px;
+    margin-bottom: 0;
+    color: #e5e7eb;
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.searchBox {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.searchBox input {
+    flex: 1;
+    padding: 13px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.searchBox input:focus {
+    outline: none;
+    border-color: #111827;
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #374151;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+    background: #111827;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   VIDEO GRID
+   ========================================================= */
+
+.videoGrid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+    );
+
+    gap: 25px;
+}
+
+/* =========================================================
+   VIDEO CARD
+   ========================================================= */
+
+.videoCard {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    transition: 0.25s;
+}
+
+.videoCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.videoCard video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 210px;
+    object-fit: cover;
+    background: #000;
+}
+
+.videoCardContent {
+    padding: 18px;
+}
+
+.videoCard h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 19px;
+}
+
+.videoCard p {
+    margin: 7px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* =========================================================
+   VIDEO ACTIONS
+   ========================================================= */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.actions button {
+    padding: 9px 13px;
+}
+
+/* =========================================================
+   RATINGS
+   ========================================================= */
+
+.ratingBox {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.ratingBox select {
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   COMMENTS
+   ========================================================= */
+
+.commentBox {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.commentBox input {
+    width: 100%;
+}
+
+.commentBox p {
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* =========================================================
+   CREATOR VIDEOS
+   ========================================================= */
+
+.creatorVideo {
+    background: white;
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.creatorVideo h3 {
+    margin-top: 0;
+}
+
+.creatorVideo video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+form {
+    margin-top: 15px;
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.success {
+    color: #166534;
+    background: #dcfce7;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.error {
+    color: #991b1b;
+    background: #fee2e2;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* =========================================================
+   HORIZONTAL LINE
+   ========================================================= */
+
+hr {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 30px 0;
+}
+
+/* =========================================================
+   CREATOR DASHBOARD
+   ========================================================= */
+
+.dashboardHeader {
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #374151
+    );
+
+    color: white;
+    padding: 30px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.dashboardHeader h1 {
+    color: white;
+    margin-top: 0;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .navbar a {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .videoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .searchBox {
+        flex-direction: column;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .hero {
+        padding: 30px 20px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .videoCard video {
+        height: 200px;
+    }
+}
+/* =========================================================
+   PROFESSIONAL VIDEO CARDS
+   ========================================================= */
+
+.videoGrid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(320px, 1fr)
+    );
+    gap: 25px;
+}
+
+
+.videoCard {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+
+.videoCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+}
+
+
+.videoCardMedia {
+    background: #000;
+}
+
+
+.videoCardMedia video {
+    width: 100%;
+    height: 220px;
+    display: block;
+    object-fit: cover;
+}
+
+
+.videoCardContent {
+    padding: 20px;
+}
+
+
+.videoCardContent h3 {
+    font-size: 20px;
+    margin: 0 0 12px 0;
+}
+
+
+.videoCreator {
+    color: #4b5563;
+    margin-bottom: 15px;
+}
+
+
+.videoMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+
+.videoMeta span {
+    background: #f3f4f6;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.videoDetails {
+    padding: 12px 0;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.videoDetails p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+
+.videoStats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.videoCard .actions {
+    margin-top: 15px;
+}
+
+
+.videoCard .actions button {
+    width: 100%;
+}
+
+
+.videoCard .ratingBox {
+    margin-top: 18px;
+}
+
+
+.videoCard .ratingBox select {
+    width: 100%;
+}
+
+
+.videoCard .ratingBox button {
+    width: 100%;
+}
+
+
+.commentInput {
+    margin-top: 12px;
+}
+
+
+.commentInput input {
+    margin-bottom: 8px;
+}
+
+
+.commentInput button {
+    width: 100%;
+}
+
+
+.commentBox h3 {
+    font-size: 17px;
+}
+/* =========================================================
+   VIDEO CATEGORIES
+   ========================================================= */
+
+.categoryBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+
+.categoryBar button {
+    background: #f3f4f6;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    border-radius: 25px;
+    padding: 9px 15px;
+    font-weight: 600;
+}
+
+
+.categoryBar button:hover {
+    background: #111827;
+    color: white;
+}
+/* =========================================================
+   ACCOUNT AREA
+   ========================================================= */
+
+.accountGrid {
+    display: grid;
+    grid-template-columns: repeat(
+        2,
+        minmax(0, 1fr)
+    );
+
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+
+.accountPanel {
+    margin-bottom: 0;
+}
+
+
+.accountPanel h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+
+.accountPanel > p {
+    color: #6b7280;
+}
+
+
+.accountPanel form {
+    margin-top: 20px;
+}
+
+
+.accountPanel button {
+    width: 100%;
+    padding: 13px;
+}
+
+
+#loginMessage,
+#registerMessage {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LOGGED-IN USER PANEL
+   ========================================================= */
+
+#userSection {
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #374151
+    );
+
+    color: white;
+}
+
+
+#userSection h2 {
+    color: white;
+    margin-top: 0;
+    font-size: 26px;
+}
+
+
+#userSection p {
+    color: #e5e7eb;
+}
+
+
+#userSection .actions {
+    margin-top: 20px;
+}
+
+
+#userSection .actions button {
+    width: auto;
+}
+
+
+/* =========================================================
+   MOBILE ACCOUNT LAYOUT
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .accountGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .accountPanel {
+        margin-bottom: 0;
+    }
+
+}
+/* =========================================================
+   CREATOR DASHBOARD
+   ========================================================= */
+
+.creatorInfo {
+    margin-bottom: 25px;
+}
+
+
+.creatorInfoGrid {
+    display: grid;
+    grid-template-columns: repeat(
+        3,
+        1fr
+    );
+
+    gap: 18px;
+}
+
+
+.infoCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    background: #f8fafc;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e5e7eb;
+}
+
+
+.infoIcon {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+
+.infoCard strong {
+    color: #111827;
+}
+
+
+.infoCard span:last-child {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CREATOR UPLOAD
+   ========================================================= */
+
+.creatorUpload {
+    margin-bottom: 25px;
+}
+
+
+.creatorUpload > p {
+    color: #6b7280;
+}
+
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.creatorUpload button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   CREATOR VIDEO GRID
+   ========================================================= */
+
+.creatorVideoGrid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+    );
+
+    gap: 25px;
+}
+
+
+.creatorVideo {
+    background: white;
+    padding: 0;
+    margin: 0;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.08);
+
+    transition: 0.25s;
+}
+
+
+.creatorVideo:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.creatorVideo h3 {
+    margin: 0;
+    padding: 20px 20px 10px 20px;
+
+    font-size: 19px;
+}
+
+
+.creatorVideo p {
+    margin: 7px 20px;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+
+.creatorVideo video {
+    width: 100%;
+    max-width: none;
+
+    height: 220px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #000;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   CREATOR DASHBOARD RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .creatorInfoGrid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================================================
+   CREATOR STATISTICS
+   ========================================================= */
+
+.creatorStats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.statCard {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.07);
+
+    transition: 0.25s;
+}
+
+
+.statCard:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.11);
+}
+
+
+.statIcon {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.statLabel {
+    color: #6b7280;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+.statCard strong {
+    color: #111827;
+
+    font-size: 32px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   MOBILE STATISTICS
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .creatorStats {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================================================
+   PROFESSIONAL CREATOR VIDEO CARDS
+   ========================================================= */
+
+.creatorVideoMedia {
+    background: #000;
+}
+
+
+.creatorVideoMedia video {
+    width: 100%;
+    height: 220px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #000;
+}
+
+
+.creatorVideoContent {
+    padding: 20px;
+}
+
+
+.creatorVideoContent h3 {
+    margin: 0 0 15px 0;
+
+    font-size: 20px;
+
+    color: #111827;
+}
+
+
+/* =========================================================
+   VIDEO TAGS
+   ========================================================= */
+
+.creatorVideoTags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+
+.creatorVideoTags span {
+    background: #f3f4f6;
+
+    color: #374151;
+
+    border-radius: 20px;
+
+    padding: 6px 10px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   VIDEO DETAILS
+   ========================================================= */
+
+.creatorVideoDetails {
+    border-top:
+        1px solid #e5e7eb;
+
+    padding-top: 12px;
+}
+
+
+.creatorVideoDetails p {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin: 8px 0;
+
+    font-size: 14px;
+
+    color: #6b7280;
+}
+
+
+.creatorVideoDetails strong {
+    color: #374151;
+}
+
+
+.creatorVideoDetails span {
+    text-align: right;
+}
+
+
+/* =========================================================
+   CREATOR CARD HOVER
+   ========================================================= */
+
+.creatorVideo {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.creatorVideo:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   MOBILE CREATOR CARDS
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .creatorVideoDetails p {
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+
+    .creatorVideoDetails span {
+        text-align: left;
+    }
+
+}
+/* =========================================================
+   CREATOR VIDEO ACTIONS
+   ========================================================= */
+
+.creatorVideoActions {
+    padding: 0 20px 20px 20px;
+}
+
+
+.deleteVideoButton {
+    width: 100%;
+
+    background: #dc2626;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 11px 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.deleteVideoButton:hover {
+    background: #b91c1c;
+}
+/* =========================================================
+   EDIT VIDEO
+   ========================================================= */
+
+.editVideoPanel {
+    border: 2px solid #e5e7eb;
+}
+
+
+.editVideoPanel h2 {
+    margin-bottom: 8px;
+}
+
+
+.editVideoPanel > p {
+    color: #6b7280;
+}
+
+
+.editActions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+
+.editActions button {
+    flex: 1;
+}
+
+
+.editActions button[type="button"] {
+    background: #6b7280;
+}
+
+
+.editActions button[type="button"]:hover {
+    background: #4b5563;
+}
+
+
+/* =========================================================
+   VIDEO ACTION BUTTONS
+   ========================================================= */
+
+.creatorVideoActions {
+    display: flex;
+
+    gap: 10px;
+
+    padding: 0 20px 20px 20px;
+}
+
+
+.creatorVideoActions button {
+    flex: 1;
+}
+
+
+.editVideoButton {
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 11px 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.editVideoButton:hover {
+    background: #1d4ed8;
+}
+
+
+@media (max-width: 500px) {
+
+    .creatorVideoActions {
+        flex-direction: column;
+    }
+
+
+    .editActions {
+        flex-direction: column;
+    }
+
+}
